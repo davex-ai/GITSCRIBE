@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+import { generateReadme } from "@/lib/generator";
 
 export async function POST(req: Request) {
   try {
@@ -34,7 +35,9 @@ export async function POST(req: Request) {
       url: repoRes.data.html_url,
     };
 
-    return NextResponse.json(data);
+    const readme = generateReadme(data)
+
+    return NextResponse.json({ ...data, readme });
   } catch (err: any) {
     return NextResponse.json(
       { error: "Failed to fetch repo" },
