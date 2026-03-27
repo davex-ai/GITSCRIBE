@@ -93,7 +93,7 @@ export default function Page() {
             Beautiful READMEs,<br />Generated Instantly
           </h1>
           <p style={{ color: "var(--text-secondary)", fontSize: "1rem", maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}>
-            Paste a GitHub URL and get a professionally crafted README in seconds. Powered by Claude.
+            Paste a GitHub URL and get a professionally crafted README in seconds.
           </p>
         </div>
 
@@ -400,29 +400,8 @@ export default function Page() {
           {/* ── Feature strip ── */}
           <div className="mt-8 slide-up slide-up-delay-4">
             <div className="glow-divider mb-8" style={{ maxWidth: "100%" }} />
-            <div className="grid grid-cols-4 gap-4">
-              {[
-                { icon: "⚙️", title: "Repo Parsing", desc: "Reads your code structure, dependencies and more" },
-                { icon: "🤖", title: "AI Authoring", desc: "Claude writes clear, professional documentation" },
-                { icon: "🎨", title: "Styled Output", desc: "Badges, tables, and GitHub-flavored markdown" },
-                { icon: "📋", title: "One-click Copy", desc: "Drop straight into your repository" },
-              ].map((f) => (
-                <div
-                  key={f.title}
-                  className="glass rounded-xl p-4"
-                  style={{ cursor: "default" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(168,85,247,0.2)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
-                >
-                  <div style={{ fontSize: "1.3rem", marginBottom: "8px" }}>{f.icon}</div>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: "0.82rem", color: "var(--text-primary)", marginBottom: "4px" }}>{f.title}</p>
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", color: "var(--text-muted)", lineHeight: 1.5 }}>{f.desc}</p>
-                </div>
-              ))}
             </div>
-          </div>
-        </div>
-
+            </div>
         {/* ── Footer ── */}
         <footer style={{ borderTop: "1px solid rgba(255,255,255,0.04)", padding: "16px 32px" }} className="flex items-center justify-between">
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.68rem", color: "var(--text-muted)" }}>
@@ -430,7 +409,7 @@ export default function Page() {
           </span>
           <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.68rem", color: "var(--text-muted)" }}>
             powered by{" "}
-            <span style={{ color: "#c084fc" }}>Claude</span>
+            <span style={{ color: "#c084fc" }}> <a href="https://github.com/davex-ai">Dave</a></span>
           </span>
         </footer>
       </div>
