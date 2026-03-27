@@ -4,15 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-/* ─── Floating particles ─── */
-const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
-  id: i,
-  size: Math.random() * 3 + 1,
-  left: Math.random() * 100,
-  duration: Math.random() * 20 + 15,
-  delay: Math.random() * 15,
-  color: i % 3 === 0 ? "#a855f7" : i % 3 === 1 ? "#3b82f6" : "#06b6d4",
-}));
 
 /* ─── Input mode tabs ─── */
 const MODES = ["repo-url", "manual"] as const;
@@ -59,23 +50,6 @@ export default function Page() {
       <div className="blob blob-1" />
       <div className="blob blob-2" />
       <div className="blob blob-3" />
-
-      {/* ── Particles ── */}
-      {PARTICLES.map((p) => (
-        <div
-          key={p.id}
-          className="particle"
-          style={{
-            width: p.size,
-            height: p.size,
-            left: `${p.left}%`,
-            background: p.color,
-            boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
-            animationDuration: `${p.duration}s`,
-            animationDelay: `${p.delay}s`,
-          }}
-        />
-      ))}
 
       {/* ── Main content ── */}
       <div className="relative z-10 flex flex-col min-h-screen">
