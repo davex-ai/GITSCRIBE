@@ -3,34 +3,46 @@ import { generateBadges } from "./badges";
 import { inferFeatures } from "./features";
 import { generateInstall } from "./install";
 
-export function generateReadme(data: RepoData): string {
+interface Options {
+  showBanner?: boolean;
+}
+
+export function generateReadme(data: RepoData, options?: Options): string {
   const badges = generateBadges(data.language);
   const features = inferFeatures(data.description, data.language);
   const install = generateInstall(data.url, data.name);
 
-  return `
-# ${data.name}
+  const banner = options?.showBanner
+    ? `![Banner](https://capsule-render.vercel.app/api?type=waving&color=6366f1&height=200&section=header&text=${encodeURIComponent(
+        data.name
+      )}&fontSize=50&fontColor=ffffff)\n\n`
+    : "";
+
+  return `${banner}# ${data.name}
+
+${badges}
 
 ## 📌 Description
 ${data.description || "No description provided."}
 
-## 🧰 Tech Stack
-${data.language.map((lang) => `- ${lang}`).join("\n")}
+## ✨ Features
+${features.map((f) => `- ${f}`).join("\n")}
 
-## 🏷️ Badges
-${badges}
+## 🧰 Tech Stack
+${data.language.map((l) => `- ${l}`).join("\n")}
 
 ## ⚙️ Installation
 ${install}
-
-## ✨ Features
-${features.map((f) => `- ${f}`).join("\n")}
 
 ## 📊 Stats
 ⭐ Stars: ${data.stars}  
 🍴 Forks: ${data.forks}
 
 ## 📄 License
-This project is licensed under the MIT License.
+MIT
+
+---
+
+<p align="center">Built by <a href="https://github.com/${data.owner}">${data.owner}</a></p>
 `;
 }
