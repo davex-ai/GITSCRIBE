@@ -5,4 +5,5 @@ export interface RepoData {
   forks: number;
   language: string[];
   url: string;
+  owner: string;
 }

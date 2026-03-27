@@ -28,5 +28,5 @@ export function generateBadges(languages: string[]) {
       const color = colorMap[lang] || "444";
       return `![${lang}](https://img.shields.io/badge/${lang}-${color}?style=for-the-badge)`;
     })
-    .join("\n");
+    .join(" ");
 }
