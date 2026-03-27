@@ -12,6 +12,12 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+    if (!repoUrl.startsWith("https://github.com/")) {
+      return NextResponse.json(
+        { error: "Invalid repo URL. Please provide a valid GitHub repository URL." },
+        { status: 400 }
+      );
+    }
 
     const data = await fetchRepoData(repoUrl);
     const readme = generateReadme(data, options);
